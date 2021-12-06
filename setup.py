@@ -1,11 +1,7 @@
 import os
-from colored import fg
 import time
 
-PRPL = fg(93)
-WHT = fg(15)
-
-print(f"""{PRPL}[{WHT}-{PRPL}] {WHT}Creating requirements.txt [selfbot modules]""")
+print(f"""[-] Creating requirements.txt [selfbot modules]""")
 with open("requirements.txt", "w") as f:
     f.write("""wheel
 discord.py
@@ -23,13 +19,13 @@ colored""")
 time.sleep(1)
 os.system("cls")
 
-print(f"""{PRPL}[{WHT}-{PRPL}] {WHT}Installing requirements.txt [selfbot modules]""")
+print(f"""[-] Installing requirements.txt [selfbot modules]""")
 os.system("pip install -r requirements.txt")
 
 time.sleep(1)
 os.system("cls")
 
-print(f"""{PRPL}[{WHT}-{PRPL}] {WHT}Creating SETUPNEW.py [config setup]""")
+print(f"""[-]Creating SETUPNEW.py [config setup]""")
 with open("SETUPNEW.py", "w") as f:
     f.write('''"""
 ============================
@@ -263,7 +259,7 @@ else:
 
 
 time.sleep(1)
-print(f"""{PRPL}[{WHT}-{PRPL}] {WHT}Running SETUPNEW.py""")
+print(f"""[-] Running SETUPNEW.py""")
 time.sleep(1)
 os.system("cls")
 exec(open("SETUPNEW.py").read())
