@@ -11,7 +11,8 @@ A selfbot is a tool for discord that lets you access things you wouldn't usually
 The config file as of now only has 2 settings.
 - Token - Your discord user token which lets the bot connect to your account.
 - Prefix - What you want to use to activate commands - `>help`
-So running the custom option that I decided to add in there for some reason, is practicall useless.
+
+- So running the custom option that I decided to add in there for some reason, is practicall useless.
 
 # IMPORTANT
 Whatever happens to your account while using this tool is not my fault, this was made for educational purposes and however you use it is not my problem.
