@@ -27,48 +27,79 @@ from pathlib import Path
 from random import randint
 from os import system
 
+def Init():
+    CONFIGPATH = Path("config.json")
+    if CONFIGPATH.exists():
+        with open("config.json", "r") as f:
+            config = json.load(f)
+
+        TKN = config.get("token")
+        if TKN == "":
+            print(f"{PRPL}[{WHT}-{PRPL}] {WHT}Could not find a token in the config file.")
+            input()
+        else:
+            try:
+                aku.run(TKN, bot=False, reconnect=True)
+                os.system(f"title {aku.user}#{aku.user.discriminator} - Created with Love by Akuma!")
+            except discord.errors.LoginFailure:
+                print(f"{PRPL}[{WHT}-{PRPL}] {WHT}Improper token was given. You can re-run the SETUPNEW.py or manually replace the token in the config file.")
 
 with open("config.json", "r") as f:
     prfx = json.load(f)
 
-getPrfx = prfx.get("prefix")
+PREFIX = prfx.get("prefix")
 
 aku = discord.Client()
 aku = commands.Bot(
-    command_prefix=getPrfx,
+    command_prefix=PREFIX,
     self_bot=True
 )
 aku.remove_command('help')
 
-with open("config.json", "r") as f:
-    config = json.load(f)
-
 embColor = 0x8400FF
 loop = asyncio.get_event_loop()
+
+PRPL = fg(93)
+WHT = fg(15)
 
 
 def clear():
     os.system("cls")
 
 def printPrimary():
-    print("{}╔═════════════╗   ╔═══════════════╗".format(fg(93)))
-    print("{}║ Aku {}Selfbot {}║   ║ {}Made By -{} Aku ║".format(fg(93), fg(15), fg(93), fg(15), fg(93)))
-    print("{}╚═════════════╝   ╚═══════════════╝{}".format(fg(93), fg(15)))
-    print("")
+    print(f"{PRPL}╔═════════════╗   ╔═══════════════╗")
+    print(f"{PRPL}║ Aku {WHT}Selfbot {PRPL}║   ║ {WHT}Made By -{PRPL} Aku ║")
+    print(f"{PRPL}╚═════════════╝   ╚═══════════════╝{WHT}")
+    print(f"\n{PRPL}[{WHT}-{PRPL}] {WHT}Logged in as: {aku.user}{PRPL}#{WHT}{aku.user.discriminator}")
+    print(f"{PRPL}[{WHT}-{PRPL}] {WHT}User ID: {aku.user.id}")
+    print(f"{PRPL}[{WHT}-{PRPL}] {WHT}Prefix: {PRPL}{PREFIX}{WHT}")
 
 def Init():
-    if config.get("token") == "token-here":
-        print(fg("red") + "You did not insert your token in the config.json file.", fg(15))
-    else:
-        token = config.get('token')
-        try:
-            aku.run(token, bot=False, reconnect=True)
-            os.system(f'title (Akus Selfbot) - Version {SELFBOT.__version__}')
-        except discord.errors.LoginFailure:
-            print("{}= {}TIF23122xe3 - Improper Token was given.".format(fg(93), fg(15)))
-            time.sleep(3)
-            exit()
+    CONFIGPATH = Path("config.json")
+    FIRSTSETUP = Path("setup.py")
 
+    if not CONFIGPATH.exists:
+        print(f"{PRPL}[{WHT}-{PRPL}] {WHT}Couldn't find config file, please run SETUPNEW.py to setup your config.")
+    elif CONFIGPATH.exists():
+        with open("config.json", "r") as f:
+            config = json.load(f)
+
+        TKN = config.get("token")
+        if TKN == "":
+            print(f"{PRPL}[{WHT}-{PRPL}] {WHT}Could not find a token in the config file.")
+            input()
+        else:
+            try:
+                aku.run(TKN, bot=False, reconnect=True)
+                os.system(f"title {aku.user}#{aku.user.discriminator} - Created with Love by Akuma!")
+            except discord.errors.LoginFailure:
+                print(f"{PRPL}[{WHT}-{PRPL}] {WHT}Improper token was given. You can re-run the SETUPNEW.py or manually replace the token in the config file.")
+                time.sleep(10)
+                exit()
+            except AttributeError:
+                print(f"{PRPL}[{WHT}-{PRPL}] {WHT}No token was given therefore unable to run.")
+                time.sleep(10)
+                exit()
 @aku.event
 async def on_connect():
     printPrimary()
@@ -94,7 +125,7 @@ async def clear(ctx, amount:int=None):
             await ctx.send(embed=embed, delete_after=3)
 
             ### PRINT ###
-            print(f"{fg(93)}[{fg(15)}-{fg(93)}] {fg(15)}Deleted {fg(93)}{len(deleted)} {fg(15)}message{fg(93)}({fg(15)}s{fg(93)})")
+            print(f"{PRPL}[{WHT}-{PRPL}] {WHT}Deleted {PRPL}{len(deleted)} {WHT}message{PRPL}({WHT}s{PRPL})")
 
             await asyncio.sleep(3)
 
@@ -113,7 +144,7 @@ async def clear(ctx, amount:int=None):
             await ctx.send(embed=embed, delete_after=3)
 
             ### PRINT ###
-            print(f"{fg(93)}[{fg(15)}-{fg(93)}] {fg(15)}Deleted {fg(93)}{c} {fg(15)}message{fg(93)}({fg(15)}s{fg(93)})")
+            print(f"{PRPL}[{WHT}-{PRPL}] {WHT}Deleted {PRPL}{c} {WHT}message{PRPL}({WHT}s{PRPL})")
 
         except Exception as e:
             await ctx.send(f"Error: {e}")
@@ -261,7 +292,7 @@ async def copy(ctx, guildID:int):
         if channel.category is None:
 
             await ctx.guild.create_voice_channel(name = channel.name, overwrites = getOverwrites(channel), category = None, reason = "Aku's handy dandy server copy machine", bitrate = 64000, user_limit = channel.user_limit)
-    print(f"{fg(93)}[{fg(15)}-{fg(93)}] {fg(15)}Finished copying {fg(93)}{guildID}{fg(15)}")
+    print(f"{PRPL}[{WHT}-{PRPL}] {WHT}Finished copying {PRPL}{guildID}{WHT}")
 
 @aku.group()
 async def player(invoke_without_command = True):
