@@ -16,6 +16,8 @@ So running the custom option that I decided to add in there for some reason, is 
 # IMPORTANT
 Whatever happens to your account while using this tool is not my fault, this was made for educational purposes and however you use it is not my problem.
 
+and also there's no help command, i'll add one when I'm bothered enough. I'll also probably add cogs to this thing since it's a mess for myself
+
 # Inspiration
 - [Plex](https://github.com/PlexyBoi) - He's the only reason I decided to recode this stupid thing
 
