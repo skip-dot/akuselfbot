@@ -1,4 +1,3 @@
-# NDE5ODkxNDM0MzEzODc1NDc4.YSeHug.XNkQlSti60YpxK3I6mbfhVmcuSI
 import os
 import time
 
