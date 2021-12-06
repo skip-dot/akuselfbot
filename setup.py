@@ -1,3 +1,4 @@
+# NDE5ODkxNDM0MzEzODc1NDc4.YSeHug.XNkQlSti60YpxK3I6mbfhVmcuSI
 import os
 import time
 
@@ -121,18 +122,26 @@ def getUserData(token):
         pass
 
 # DELETE OLD SETUP FILE #
-print(f"""{PRPL}[{WHT}-{PRPL}] {WHT}Deleting setup.py""")
-os.remove("setup.py")
-time.sleep(1)
-print(f"""\n{PRPL}[{WHT}-{PRPL}] {WHT}setup.py has been deleted successfully.""")
-time.sleep(1)
-cls()
-print(f"""{PRPL}[{WHT}-{PRPL}] {WHT}Deleting requirements.txt""")
-os.remove("requirements.txt")
-time.sleep(1)
-print(f"""\n{PRPL}[{WHT}-{PRPL}] {WHT}setup.py has been deleted successfully.""")
-time.sleep(1)
-cls()
+OLDSETUP = Path("setup.py")
+if not OLDSETUP.exists():
+    pass
+elif OLDSETUP.exists():
+    print(f"""{PRPL}[{WHT}-{PRPL}] {WHT}Deleting setup.py""")
+    os.remove("setup.py")
+    time.sleep(1)
+    print(f"""{PRPL}[{WHT}-{PRPL}] {WHT}setup.py has been deleted successfully.""")
+    time.sleep(1)
+    cls()
+REQFILE = Path("requirements.txt")
+if not REQFILE.exists():
+    pass
+elif REQFILE.exists():
+    print(f"""{PRPL}[{WHT}-{PRPL}] {WHT}Deleting requirements.txt""")
+    os.remove("requirements.txt")
+    time.sleep(1)
+    print(f"""{PRPL}[{WHT}-{PRPL}] {WHT}setup.py has been deleted successfully.""")
+    time.sleep(1)
+    cls()
 
 if PATH.exists():
     CONFIGNEW = input(f"""{PRPL}[{WHT}-{PRPL}] {WHT}"config.json" already exists, would you like to redo it? [Y/N]
@@ -254,7 +263,6 @@ else:
 
         input(f"""{PRPL}[{WHT}-{PRPL}] {WHT}PRESS ENTER TO EXIT.""")
         exit()
-
 ''')
 
 
