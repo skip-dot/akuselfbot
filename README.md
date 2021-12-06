@@ -1,6 +1,3 @@
-![Akame](https://i.imgur.com/qV6BhgI.gif)
-
-
 # Aku's Selfbot
 
 A selfbot is a tool for discord that lets you access things you wouldn't usually have as a user.
@@ -24,3 +21,6 @@ Whatever happens to your account while using this tool is not my fault, this was
 
 # Questions
 - If there are any questions just open an issue, and I'll answer it whenever I get time.
+
+# Akame Bae
+![Akame](https://i.imgur.com/qV6BhgI.gif)
