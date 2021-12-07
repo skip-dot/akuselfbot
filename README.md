@@ -25,5 +25,9 @@ and also there's no help command, i'll add one when I'm bothered enough. I'll al
 # Questions
 - If there are any questions just open an issue, and I'll answer it whenever I get time.
 
+# Working On
+- Cogs
+- Error Handlers
+
 # Akame Bae
 ![Akame](https://i.imgur.com/qV6BhgI.gif)
